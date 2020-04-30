@@ -1,4 +1,4 @@
-FROM buildpack-deps:stable-curl
+FROM buildpack-deps:stable-scm
 
 ADD install.sh /
 RUN apt-get update && \
