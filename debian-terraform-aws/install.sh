@@ -18,3 +18,10 @@ fi
 
 curl -s "https://releases.hashicorp.com/terraform/${latest_version}/terraform_${latest_version}_linux_amd64.zip" -o terraform.zip
 unzip terraform.zip -d /bin/
+
+# tflint https://github.com/terraform-linters/tflint
+curl -L "$(curl -Ls https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" -o tflint.zip
+unzip tflint.zip
+install tflint /usr/local/bin
+tflint -v
+rm tflint.zip
