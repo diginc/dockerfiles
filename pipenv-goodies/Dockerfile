@@ -1,10 +1,12 @@
 # Based on https://github.com/Ilhicas/alpine-pipenv + docker + extra packages
-FROM docker:latest
+FROM python:buster
 
-ARG packages
-RUN apk --update add bash python3 python3-dev curl gcc make \
-        musl-dev libffi-dev openssl-dev ${packages} \
-    && rm -rf /var/cache/apk/* \
+# Only works for docker CLIENT (bind mounted socket)
+COPY --from=docker:18.09.3 /usr/local/bin/docker /usr/local/bin/
+
+RUN apt-get update && \
+    apt-get install -y python3-dev curl gcc make \
+        libffi-dev libssl-dev ${packages} \
     && pip3 install -U pip pipenv
 
 WORKDIR /workspace
