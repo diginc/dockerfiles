@@ -9,7 +9,7 @@ unzip -q awscliv2.zip
 aws --version
 
 # Terraform latest 0.12 verison for modules that do not yet support 0.13+
-latest_version='v0.14'
+latest_version='v0.13.5'
 latest_version="${latest_version/v/}" # strip the v/version from front
 
 curl -s "https://releases.hashicorp.com/terraform/${latest_version}/terraform_${latest_version}_linux_amd64.zip" -o terraform.zip
