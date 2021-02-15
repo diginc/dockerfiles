@@ -10,7 +10,7 @@ aws --version
 
 # Terraform
 latest_version=''
-if ! latest_version=$(curl -sI https://github.com/hashicorp/terraform/releases/latest | grep --color=never -i Location | awk -F / '{print $NF}' | tr -d '[:cntrl:]'); then
+if ! latest_version=$(curl -sI https://github.com/hashicorp/terraform/releases/latest | grep --color=never -i '^location:' | awk -F / '{print $NF}' | tr -d '[:cntrl:]'); then
     print "Failed to retrieve latest docker-pi-hole release metadata"
 else
     latest_version="${latest_version/v/}" # strip the v/version from front
